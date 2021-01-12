@@ -1,5 +1,8 @@
 Revision history for Perl extension Data::FormValidator::Constraints::MethodsFactory:
 
+{{$NEXT}}
+    - switch to Dist::Zilla for release management
+
 0.02    Fri Apr 23 16:55 PDT 2010
     - switch to Git
     - added M::B::Compat traditional Makefile.PL
