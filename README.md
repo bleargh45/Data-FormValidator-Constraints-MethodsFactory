@@ -9,34 +9,39 @@ use Data::FormValidator::Constraints::MethodsFactory qw(:set :num :bool);
 
 # SET constraints (:set)
 constraint_methods => {
-    status        => FV_set(1, qw(new active disabled)),
-    how_many      => FV_set_num(1, (1 .. 20)),
-    province      => FV_set_word(1, "AB QC ON TN NU"),
-    seen_before   => FV_set_cmp(1, sub { $seen{$_[0]} }, qw(foo bar)),
+  status      => FV_set(1, qw(new active disabled)),
+  how_many    => FV_set_num(1, (1 .. 20)),
+  province    => FV_set_word(1, "AB QC ON TN NU"),
+  seen_before => FV_set_cmp(1, sub { $seen{ $_[0] } }, qw(foo bar)),
 }
 
 # NUMERIC constraints (:num)
 constraint_methods => {
-    how_many      => FV_clamp(1, 1, 10),
-    small_amount  => FV_lt(1, 3),
-    large_amount  => FV_gt(1, 10),
-    small_again   => FV_le(1, 3),
-    large_again   => FV_ge(1, 10),
+  how_many      => FV_clamp(1, 1, 10),
+  small_amount  => FV_lt(1, 3),
+  large_amount  => FV_gt(1, 10),
+  small_again   => FV_le(1, 3),
+  large_again   => FV_ge(1, 10),
 }
 
 # BOOLEAN constraints (:bool)
 constraint_methods => {
-    bad_status    => FV_not(
-                          FV_set(1, qw(new active disabled))
-                          ),
-    email         => FV_or(
-                          FV_set(1,$current_value),
-                          Data::FormValidator::Constraints::email(),
-                          ),
-    password      => FV_and(
-                          FV_length_between(6,32),
-                          my_password_validation_constraint(),
-                          ),
+  # e.g. NOT in the given set
+  bad_status => FV_not(
+    FV_set(1, qw(new active disabled))
+  ),
+
+  # e.g. either the current value, OR validates as an e-mail address
+  email => FV_or(
+    FV_set(1, $current_value),
+    Data::FormValidator::Constraints::email(),
+  ),
+
+  # e.g. valid length, AND matches password validation routine
+  password => FV_and(
+    FV_length_between(6, 32),
+    my_password_validation_constraint(),
+  ),
 }
 ```
 
