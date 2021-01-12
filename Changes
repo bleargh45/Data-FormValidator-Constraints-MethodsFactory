@@ -2,6 +2,7 @@ Revision history for Perl extension Data::FormValidator::Constraints::MethodsFac
 
 {{$NEXT}}
     - switch to Dist::Zilla for release management
+    - move to GitHub
 
 0.02    Fri Apr 23 16:55 PDT 2010
     - switch to Git
