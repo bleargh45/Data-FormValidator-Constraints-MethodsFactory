@@ -1,6 +1,8 @@
 Revision history for Perl extension Data::FormValidator::Constraints::MethodsFactory:
 
 {{$NEXT}}
+
+0.03      2021-01-12 19:40:23-08:00 America/Vancouver
     - switch to Dist::Zilla for release management
     - move to GitHub
 
