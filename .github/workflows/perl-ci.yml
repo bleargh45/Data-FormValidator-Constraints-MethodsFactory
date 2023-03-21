@@ -9,7 +9,7 @@ on:
     branches:
       - "*"
   schedule:
-    cron: "15 6 * * 0"  # Once weekly, on Sundays
+    - cron: "15 6 * * 0"  # Once weekly, on Sundays
 
 jobs:
   build:
